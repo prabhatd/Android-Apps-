@@ -8,13 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
 public class StandaloneActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String GOOGLE_API_KEY ="AIzaSyCoL9493IkrimwM6qkTNEhlPwmamYk0uQc";
-    private String YOUTUBE_VIDEO_ID ="RLykC1VN7NY";
+    private String YOUTUBE_VIDEO_ID ="tkfwqGa5UrM";
     private String YOUTUBE_PLAYLIST_ID="PLFs4vir_WsTwEd-nJgVJCZPNL3HALHHpF";
     private Button btnPlayVideo;
     private  Button btnPlayplaylist;
@@ -25,8 +26,9 @@ public class StandaloneActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_standalone);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        btnPlayVideo = findViewById(R.id.btnVideo);
         btnPlayplaylist= (Button) findViewById(R.id.btnPlayList);
-        btnPlayVideo= (Button) findViewById(R.id.btnVideo);
+
         btnPlayVideo.setOnClickListener(this);
         btnPlayplaylist.setOnClickListener(this);
      /*   FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -45,14 +47,18 @@ public class StandaloneActivity extends AppCompatActivity implements View.OnClic
         Intent intent =null;
 
         switch (v.getId()){
-            case R.id.btnPlayVideo:
+            /*case R.id.btnPlayVideo:
+                Toast.makeText(getApplicationContext(),"You Clicked me",Toast.LENGTH_LONG).show();
                 intent = YouTubeStandalonePlayer.createVideoIntent(this,GOOGLE_API_KEY,YOUTUBE_VIDEO_ID);
-                break;
+                break;*/
 
+            case R.id.btnVideo:
+                intent= YouTubeStandalonePlayer.createVideoIntent(this,GOOGLE_API_KEY,YOUTUBE_VIDEO_ID);
+                break;
             case R.id.btnPlayList:
                 intent= YouTubeStandalonePlayer.createPlaylistIntent(this,GOOGLE_API_KEY,YOUTUBE_PLAYLIST_ID);
                 break;
-default:
+             default:
 
         }
 
